@@ -1,0 +1,440 @@
+/* ========================================
+   Kenzi Tema v1.0.0
+   Dark Blue/Black Theme for Pterodactyl Panel
+   Author: kenzidev5
+   Panel Legal By Alzzy
+   Inspired from: 175792.png & 175793.png
+======================================== */
+
+:root {
+    --primary-bg: #0a0f1a;
+    --secondary-bg: #111827;
+    --card-bg: #1a2332;
+    --text-primary: #e5e9f0;
+    --text-secondary: #a0aec0;
+    --accent-cyan: #2dd4bf;
+    --accent-blue: #3b82f6;
+    --border-color: #2d3748;
+    --status-offline: #ef4444;
+    --status-online: #10b981;
+    --header-height: 60px;
+    --sidebar-width: 260px;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR / MAIN MENU ===== */
+.sidebar, .main-menu, [class*="sidebar"] {
+    width: var(--sidebar-width);
+    background-color: var(--secondary-bg) !important;
+    border-right: 1px solid var(--border-color);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar .logo, .main-menu .logo {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-link, .main-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--text-secondary) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .nav-link:hover, .main-menu a:hover {
+    background-color: rgba(45, 212, 191, 0.1);
+    color: var(--accent-cyan) !important;
+    border-left-color: var(--accent-cyan);
+}
+
+.sidebar .nav-link i, .main-menu a i {
+    width: 24px;
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+/* ===== ACCOUNT SETTINGS (dari foto 175792.png) ===== */
+.account-settings, .sidebar .account-section {
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.account-title, .section-title {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-left: 8px;
+}
+
+.account-menu, .account-settings .menu-item {
+    list-style: none;
+}
+
+.account-link, .account-settings a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.account-link:hover, .account-settings a:hover {
+    background-color: rgba(45, 212, 191, 0.1);
+    color: var(--accent-cyan);
+}
+
+.account-link i, .account-settings a i {
+    width: 20px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+/* ===== VERIFIED USER BADGE ===== */
+.verified-badge, .user-badge {
+    background-color: #2b6f4b;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 30px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+/* ===== MAIN CONTENT AREA ===== */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 20px 30px;
+}
+
+/* ===== TOPBAR / HEADER ===== */
+.topbar, .navbar, header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--primary-bg) !important;
+}
+
+/* ===== TIME DISPLAY (21.05 dari foto) ===== */
+.current-time {
+    font-family: var(--font-mono);
+    background: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    color: var(--accent-cyan);
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+/* ===== SYSTEM STATS (CPU & Runtime) ===== */
+.system-stats {
+    display: flex;
+    gap: 24px;
+    background: var(--card-bg);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(4px);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-item i {
+    color: var(--accent-cyan);
+}
+
+.stat-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.runtime {
+    font-family: var(--font-mono);
+    background: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    color: var(--accent-cyan);
+    font-size: 0.9rem;
+}
+
+/* ===== WELCOME MESSAGE (Hello, kenzidev5) ===== */
+.welcome-message {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.welcome-message span {
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.welcome-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ===== SERVER CARDS ===== */
+.server-card, .card, .dashboard-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.server-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.server-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.server-name {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.server-name i {
+    margin-right: 8px;
+    color: var(--accent-blue);
+}
+
+/* ===== STATUS BADGE ===== */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.online {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: var(--status-online);
+    border: 1px solid var(--status-online);
+}
+
+.status-badge.offline {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--status-offline);
+    border: 1px solid var(--status-offline);
+}
+
+/* ===== SERVER STATS ===== */
+.server-stats {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.server-stat {
+    flex: 1;
+    text-align: center;
+}
+
+.server-stat .label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.server-stat .value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* ===== OFFLINE MESSAGE (SERVER IS OFFLINE) ===== */
+.offline-message {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--status-offline);
+    color: #fca5a5;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+/* ===== PANEL LEGACY (Panel Legal By Alzzy) ===== */
+.panel-legal {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.panel-legal a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.panel-legal a:hover {
+    color: var(--accent-cyan);
+    text-decoration: underline;
+}
+
+/* ===== PTERODACTYL FOOTER ===== */
+footer, .footer {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .topbar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .system-stats {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d3748;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-accent {
+    color: var(--accent-cyan);
+}
+
+.bg-card {
+    background-color: var(--card-bg);
+}
+
+.border-card {
+    border: 1px solid var(--border-color);
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}

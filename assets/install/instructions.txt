@@ -1,0 +1,139 @@
+╔══════════════════════════════════════════════════════════════╗
+║              KENZI TEMA - MANUAL INSTALLATION               ║
+║                  Panel Legal By Kenzi                       ║
+║                    Version 1.0 (2026)                       ║
+╚══════════════════════════════════════════════════════════════╝
+
+██████╗ ███████╗███████╗ ██████╗██████╗ ██╗██████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+██║  ██║█████╗  █████╗  ██║     ██████╔╝██║██║  ██║   ██║   ██║██║   ██║██╔██╗ ██║
+██║  ██║██╔══╝  ██╔══╝  ██║     ██╔══██╗██║██║  ██║   ██║   ██║██║   ██║██║╚██╗██║
+██████╔╝███████╗██║     ╚██████╗██║  ██║██║██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║
+╚═════╝ ╚══════╝╚═╝      ╚═════╝╚═╝  ╚═╝╚═╝╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+
+===============================================================================
+
+📋 PERSYARATAN:
+---------------
+✓ Pterodactyl Panel sudah terinstall
+✓ Akses root/server
+✓ Koneksi internet (untuk download file)
+✓ PHP 7.4+
+
+===============================================================================
+
+🚀 CARA INSTALL - METODE 1 (AUTO INSTALL):
+-------------------------------------------
+Jalankan perintah berikut di terminal VPS/root:
+
+bash <(curl -s https://raw.githubusercontent.com/z2yyt9-spec/kenzi-tema/main/install/pterodactyl-theme.sh)
+
+Atau download dulu lalu jalankan:
+
+wget https://raw.githubusercontent.com/z2yyt9-spec/kenzi-tema/main/install/pterodactyl-theme.sh
+chmod +x pterodactyl-theme.sh
+sudo ./pterodactyl-theme.sh
+
+===============================================================================
+
+📝 CARA INSTALL - METODE 2 (MANUAL):
+------------------------------------
+
+LANGKAH 1: Upload File CSS
+---------------------------
+1. Upload file 'kenzitema.css' ke folder:
+   /var/www/pterodactyl/public/themes/custom/
+
+2. Jika folder 'custom' tidak ada, buat dulu:
+   mkdir -p /var/www/pterodactyl/public/themes/custom
+
+3. Set permission:
+   chown -R www-data:www-data /var/www/pterodactyl/public/themes
+   chmod -R 755 /var/www/pterodactyl/public/themes
+
+LANGKAH 2: Edit File .env
+--------------------------
+Edit file .env Pterodactyl:
+
+nano /var/www/pterodactyl/.env
+
+Tambahkan atau ubah baris berikut:
+
+APP_THEME=custom/kenzitema
+
+Simpan file: CTRL+X, tekan Y, lalu Enter
+
+LANGKAH 3: Clear Cache
+-----------------------
+Jalankan perintah berikut:
+
+cd /var/www/pterodactyl
+php artisan view:clear
+php artisan config:clear
+php artisan cache:clear
+
+LANGKAH 4: Restart Service
+---------------------------
+# Untuk Nginx:
+systemctl restart nginx
+
+# Untuk Apache:
+systemctl restart apache2
+
+# Restart PHP (sesuaikan versi):
+systemctl restart php8.1-fpm
+
+LANGKAH 5: Selesai
+-------------------
+Refresh halaman panel Anda (tekan Ctrl+F5 untuk clear cache browser)
+
+===============================================================================
+
+🎨 FITUR TEMA:
+--------------
+✓ Warna dasar hitam kebiruan (dark blue/black theme)
+✓ Menampilkan data CPU real-time
+✓ Menampilkan waktu runtime server
+✓ Jam digital (format 24 jam)
+✓ Status server (Online/Offline) dengan warna berbeda
+✓ Menu Account Settings lengkap (My Account, API Credentials, SSH Keys, etc)
+✓ Verified User badge
+✓ Panel Legal footer
+✓ Responsive untuk mobile/tablet
+✓ Custom scrollbar
+✓ Hover effects
+
+===============================================================================
+
+❓ TROUBLESHOOTING:
+-------------------
+
+❌ Tema tidak muncul:
+   • Clear browser cache (Ctrl+F5)
+   • Cek file CSS ada di: /var/www/pterodactyl/public/themes/custom/kenzitema.css
+   • Cek permission folder: chmod -R 755 /var/www/pterodactyl/public/themes
+   • Pastikan APP_THEME=custom/kenzitema di file .env
+
+❌ Error 500:
+   • Cek log error: tail -f /var/www/pterodactyl/storage/logs/laravel.log
+   • Jalankan ulang: php artisan view:clear
+
+❌ Tema hanya muncul sebagian:
+   • Pastikan tidak ada custom CSS lain yang bentrok
+   • Coba nonaktifkan tema lain
+
+❌ Ingin kembali ke tema default:
+   • Edit .env: APP_THEME=default
+   • php artisan view:clear
+
+===============================================================================
+
+📞 DUKUNGAN:
+------------
+• Creator: kenzidev5
+• Panel Legal By Kenzi 
+• © Pterodactyl® 2015 - 2026
+
+Terima kasih telah menggunakan Kenzi Tema! 🎉
+
+===============================================================================
